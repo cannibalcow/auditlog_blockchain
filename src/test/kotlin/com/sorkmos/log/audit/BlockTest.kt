@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test
 internal class BlockTest {
 
     @Test
-    fun generateHash() {
+    fun `generate hash`() {
         var hash = generateHash("SHA-1", "hej$FIRST_HASH")
         Assertions.assertThat((hash)).isEqualTo("B98B068CD9E6D48C55C3234DCC6BA2BCD5A983E5");
     }
 
 
     @Test
-    fun createBlock() {
+    fun `test creating two blocks`() {
         val b1 = Block.initialBLock("hej")
         val b2 = b1.createNextBlock("svejs")
 
@@ -27,7 +27,7 @@ internal class BlockTest {
     }
 
     @Test
-    fun thousandBlocks() {
+    fun `create one thousand blocks and validate blockchain`() {
         val initBlock = Block.initialBLock("first row")
         val blocks = mutableListOf<Block>(initBlock)
 
@@ -44,7 +44,7 @@ internal class BlockTest {
     }
 
     @Test
-    fun modifiedThousandBlocks() {
+    fun `modify block in middle of chain`() {
         val initBlock = Block.initialBLock("first row")
         val blocks = mutableListOf<Block>(initBlock)
 
